@@ -1,8 +1,15 @@
 #!/bin/sh
 
+INSTALL_DIR=~/test
+
 mkdir -p ~/bin
-cp -r tmux-files/.tmux* ~/
-cp -r vim-files/.vim* ~/
+cp -r tmux-files/.tmux* $INSTALL_DIR
+cp -r vim-files/.vim* $INSTALL_DIR
+cp bash_aliases $INSTALL_DIR/.bash_aliases
+
+# vim setup
+cd $INSTALL_DIR/.vim/bundle
+vim -u NONE -c "helptags vim-bsession/doc" -c q
 
 echo "installing binaries in ~/bin: requires sudo perms"
 which apt >/dev/null 2>&1
